@@ -19,7 +19,7 @@ INSTALLED_APPS += [
     "django_grpc_framework",
     "account_manager.account",
     "account_manager.api",
-    "account_manager.auth",
+    "account_manager.auth_system",
 ]
 
 ROOT_URLCONF = "config.urls.dev"
