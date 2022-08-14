@@ -1,3 +1,4 @@
+# Sync dev settigns wtih base settings
 from config.settings.base import *
 
 import environ
@@ -15,10 +16,12 @@ DEBUG = env("DEBUG")
 ALLOWED_HOSTS = str(env("ALLOWED_HOSTS")).strip('"').strip().split()
 
 INSTALLED_APPS += [
+    "django_grpc_framework",
     "account_manager.account",
     "account_manager.api",
 ]
 
+ROOT_URLCONF = "config.urls.dev"
 
 DATABASES = {
     "default": {
