@@ -16,6 +16,7 @@ class UserService(generics.ModelService):
     queryset = User.objects.all()
     serializer_class = UserProtoSerializer
 
+    @authentication_by(JWTAuth)
     def List(self, request, context):
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
@@ -24,6 +25,6 @@ class UserService(generics.ModelService):
         for message in serializer.message:
             yield message
 
+    @authentication_by(JWTAuth)
     def Retrieve(self, request, context):
-        print(request)
         return super().Retrieve(request, context)
