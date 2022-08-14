@@ -1,3 +1,5 @@
 from django.db import models
 
-# Create your models here.
+# Using for saving logouted tokens and etc ...
+class BlackListToken(models.Model):
+    token = models.CharField(204, unique=True, blank=False, null=False)
