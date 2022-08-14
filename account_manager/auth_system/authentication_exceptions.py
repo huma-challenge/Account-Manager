@@ -6,3 +6,7 @@ class TokenIsInvalid(Exception):
 
 class TokenExpired(Exception):
     "Token is Expired"
+
+
+class AuthenticationFailed(Exception):
+    "Authentication Failed"
