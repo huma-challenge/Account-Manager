@@ -15,50 +15,25 @@ _sym_db = _symbol_database.Default()
 from google.protobuf import empty_pb2 as google_dot_protobuf_dot_empty__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1d\x61\x63\x63ount_manager/account.proto\x12\x07\x61\x63\x63ount\x1a\x1bgoogle/protobuf/empty.proto\"\xb7\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x12\n\nfirst_name\x18\x04 \x01(\t\x12\x11\n\tlast_name\x18\x05 \x01(\t\x12\r\n\x05\x65mail\x18\x06 \x01(\t\x12\x11\n\tis_active\x18\x07 \x01(\x08\x12\x10\n\x08is_staff\x18\x08 \x01(\x08\x12\x14\n\x0cis_superuser\x18\t \x01(\x08\x12\x0e\n\x06groups\x18\n \x03(\x05\"\x11\n\x0fUserListRequest\"!\n\x13UserRetrieveRequest\x12\n\n\x02id\x18\x01 \x01(\x05\"T\n\x12UserCreateResponse\x12!\n\x05token\x18\x01 \x01(\x0b\x32\x12.account.UserToken\x12\x1b\n\x04user\x18\x02 \x01(\x0b\x32\r.account.User\"6\n\x10UserLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"\x1a\n\tUserToken\x12\r\n\x05token\x18\x01 \x01(\t2\xb3\x02\n\x0bUserManager\x12\x31\n\x04List\x12\x18.account.UserListRequest\x1a\r.account.User0\x01\x12&\n\x06\x43reate\x12\r.account.User\x1a\r.account.User\x12\x37\n\x08Retrieve\x12\x1c.account.UserRetrieveRequest\x1a\r.account.User\x12&\n\x06Update\x12\r.account.User\x1a\r.account.User\x12\x30\n\x07\x44\x65stroy\x12\r.account.User\x1a\x16.google.protobuf.Empty\x12\x36\n\x05Login\x12\x19.account.UserLoginRequest\x1a\x12.account.UserTokenb\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x1d\x61\x63\x63ount_manager/account.proto\x12\x07\x61\x63\x63ount\x1a\x1bgoogle/protobuf/empty.proto\"\xb7\x01\n\x04User\x12\n\n\x02id\x18\x01 \x01(\x05\x12\x10\n\x08username\x18\x02 \x01(\t\x12\x10\n\x08password\x18\x03 \x01(\t\x12\x12\n\nfirst_name\x18\x04 \x01(\t\x12\x11\n\tlast_name\x18\x05 \x01(\t\x12\r\n\x05\x65mail\x18\x06 \x01(\t\x12\x11\n\tis_active\x18\x07 \x01(\x08\x12\x10\n\x08is_staff\x18\x08 \x01(\x08\x12\x14\n\x0cis_superuser\x18\t \x01(\x08\x12\x0e\n\x06groups\x18\n \x03(\x05\"\x1a\n\tUserToken\x12\r\n\x05token\x18\x01 \x01(\t\"4\n\x0fUserListRequest\x12!\n\x05token\x18\x01 \x01(\x0b\x32\x12.account.UserToken\"7\n\x12UserDestroyRequest\x12!\n\x05token\x18\x01 \x01(\x0b\x32\x12.account.UserToken\"8\n\x13UserRetrieveRequest\x12!\n\x05token\x18\x01 \x01(\x0b\x32\x12.account.UserToken\"S\n\x11UserUpdateRequest\x12!\n\x05token\x18\x01 \x01(\x0b\x32\x12.account.UserToken\x12\x1b\n\x04user\x18\x02 \x01(\x0b\x32\r.account.User\"6\n\x10UserLoginRequest\x12\x10\n\x08username\x18\x01 \x01(\t\x12\x10\n\x08password\x18\x02 \x01(\t\"S\n\x11UserLoginResponse\x12!\n\x05token\x18\x01 \x01(\x0b\x32\x12.account.UserToken\x12\x1b\n\x04user\x18\x02 \x01(\x0b\x32\r.account.User\"6\n\x11UserLogoutRequest\x12!\n\x05token\x18\x01 \x01(\x0b\x32\x12.account.UserToken2\x94\x03\n\x0bUserManager\x12\x31\n\x04List\x12\x18.account.UserListRequest\x1a\r.account.User0\x01\x12&\n\x06\x43reate\x12\r.account.User\x1a\r.account.User\x12\x37\n\x08Retrieve\x12\x1c.account.UserRetrieveRequest\x1a\r.account.User\x12\x33\n\x06Update\x12\x1a.account.UserUpdateRequest\x1a\r.account.User\x12>\n\x07\x44\x65stroy\x12\x1b.account.UserDestroyRequest\x1a\x16.google.protobuf.Empty\x12>\n\x05Login\x12\x19.account.UserLoginRequest\x1a\x1a.account.UserLoginResponse\x12<\n\x06Logout\x12\x1a.account.UserLogoutRequest\x1a\x16.google.protobuf.Emptyb\x06proto3')
 
 
 
 _USER = DESCRIPTOR.message_types_by_name['User']
-_USERLISTREQUEST = DESCRIPTOR.message_types_by_name['UserListRequest']
-_USERRETRIEVEREQUEST = DESCRIPTOR.message_types_by_name['UserRetrieveRequest']
-_USERCREATERESPONSE = DESCRIPTOR.message_types_by_name['UserCreateResponse']
-_USERLOGINREQUEST = DESCRIPTOR.message_types_by_name['UserLoginRequest']
 _USERTOKEN = DESCRIPTOR.message_types_by_name['UserToken']
+_USERLISTREQUEST = DESCRIPTOR.message_types_by_name['UserListRequest']
+_USERDESTROYREQUEST = DESCRIPTOR.message_types_by_name['UserDestroyRequest']
+_USERRETRIEVEREQUEST = DESCRIPTOR.message_types_by_name['UserRetrieveRequest']
+_USERUPDATEREQUEST = DESCRIPTOR.message_types_by_name['UserUpdateRequest']
+_USERLOGINREQUEST = DESCRIPTOR.message_types_by_name['UserLoginRequest']
+_USERLOGINRESPONSE = DESCRIPTOR.message_types_by_name['UserLoginResponse']
+_USERLOGOUTREQUEST = DESCRIPTOR.message_types_by_name['UserLogoutRequest']
 User = _reflection.GeneratedProtocolMessageType('User', (_message.Message,), {
   'DESCRIPTOR' : _USER,
   '__module__' : 'account_manager.account_pb2'
   # @@protoc_insertion_point(class_scope:account.User)
   })
 _sym_db.RegisterMessage(User)
-
-UserListRequest = _reflection.GeneratedProtocolMessageType('UserListRequest', (_message.Message,), {
-  'DESCRIPTOR' : _USERLISTREQUEST,
-  '__module__' : 'account_manager.account_pb2'
-  # @@protoc_insertion_point(class_scope:account.UserListRequest)
-  })
-_sym_db.RegisterMessage(UserListRequest)
-
-UserRetrieveRequest = _reflection.GeneratedProtocolMessageType('UserRetrieveRequest', (_message.Message,), {
-  'DESCRIPTOR' : _USERRETRIEVEREQUEST,
-  '__module__' : 'account_manager.account_pb2'
-  # @@protoc_insertion_point(class_scope:account.UserRetrieveRequest)
-  })
-_sym_db.RegisterMessage(UserRetrieveRequest)
-
-UserCreateResponse = _reflection.GeneratedProtocolMessageType('UserCreateResponse', (_message.Message,), {
-  'DESCRIPTOR' : _USERCREATERESPONSE,
-  '__module__' : 'account_manager.account_pb2'
-  # @@protoc_insertion_point(class_scope:account.UserCreateResponse)
-  })
-_sym_db.RegisterMessage(UserCreateResponse)
-
-UserLoginRequest = _reflection.GeneratedProtocolMessageType('UserLoginRequest', (_message.Message,), {
-  'DESCRIPTOR' : _USERLOGINREQUEST,
-  '__module__' : 'account_manager.account_pb2'
-  # @@protoc_insertion_point(class_scope:account.UserLoginRequest)
-  })
-_sym_db.RegisterMessage(UserLoginRequest)
 
 UserToken = _reflection.GeneratedProtocolMessageType('UserToken', (_message.Message,), {
   'DESCRIPTOR' : _USERTOKEN,
@@ -67,22 +42,77 @@ UserToken = _reflection.GeneratedProtocolMessageType('UserToken', (_message.Mess
   })
 _sym_db.RegisterMessage(UserToken)
 
+UserListRequest = _reflection.GeneratedProtocolMessageType('UserListRequest', (_message.Message,), {
+  'DESCRIPTOR' : _USERLISTREQUEST,
+  '__module__' : 'account_manager.account_pb2'
+  # @@protoc_insertion_point(class_scope:account.UserListRequest)
+  })
+_sym_db.RegisterMessage(UserListRequest)
+
+UserDestroyRequest = _reflection.GeneratedProtocolMessageType('UserDestroyRequest', (_message.Message,), {
+  'DESCRIPTOR' : _USERDESTROYREQUEST,
+  '__module__' : 'account_manager.account_pb2'
+  # @@protoc_insertion_point(class_scope:account.UserDestroyRequest)
+  })
+_sym_db.RegisterMessage(UserDestroyRequest)
+
+UserRetrieveRequest = _reflection.GeneratedProtocolMessageType('UserRetrieveRequest', (_message.Message,), {
+  'DESCRIPTOR' : _USERRETRIEVEREQUEST,
+  '__module__' : 'account_manager.account_pb2'
+  # @@protoc_insertion_point(class_scope:account.UserRetrieveRequest)
+  })
+_sym_db.RegisterMessage(UserRetrieveRequest)
+
+UserUpdateRequest = _reflection.GeneratedProtocolMessageType('UserUpdateRequest', (_message.Message,), {
+  'DESCRIPTOR' : _USERUPDATEREQUEST,
+  '__module__' : 'account_manager.account_pb2'
+  # @@protoc_insertion_point(class_scope:account.UserUpdateRequest)
+  })
+_sym_db.RegisterMessage(UserUpdateRequest)
+
+UserLoginRequest = _reflection.GeneratedProtocolMessageType('UserLoginRequest', (_message.Message,), {
+  'DESCRIPTOR' : _USERLOGINREQUEST,
+  '__module__' : 'account_manager.account_pb2'
+  # @@protoc_insertion_point(class_scope:account.UserLoginRequest)
+  })
+_sym_db.RegisterMessage(UserLoginRequest)
+
+UserLoginResponse = _reflection.GeneratedProtocolMessageType('UserLoginResponse', (_message.Message,), {
+  'DESCRIPTOR' : _USERLOGINRESPONSE,
+  '__module__' : 'account_manager.account_pb2'
+  # @@protoc_insertion_point(class_scope:account.UserLoginResponse)
+  })
+_sym_db.RegisterMessage(UserLoginResponse)
+
+UserLogoutRequest = _reflection.GeneratedProtocolMessageType('UserLogoutRequest', (_message.Message,), {
+  'DESCRIPTOR' : _USERLOGOUTREQUEST,
+  '__module__' : 'account_manager.account_pb2'
+  # @@protoc_insertion_point(class_scope:account.UserLogoutRequest)
+  })
+_sym_db.RegisterMessage(UserLogoutRequest)
+
 _USERMANAGER = DESCRIPTOR.services_by_name['UserManager']
 if _descriptor._USE_C_DESCRIPTORS == False:
 
   DESCRIPTOR._options = None
   _USER._serialized_start=72
   _USER._serialized_end=255
-  _USERLISTREQUEST._serialized_start=257
-  _USERLISTREQUEST._serialized_end=274
-  _USERRETRIEVEREQUEST._serialized_start=276
-  _USERRETRIEVEREQUEST._serialized_end=309
-  _USERCREATERESPONSE._serialized_start=311
-  _USERCREATERESPONSE._serialized_end=395
-  _USERLOGINREQUEST._serialized_start=397
-  _USERLOGINREQUEST._serialized_end=451
-  _USERTOKEN._serialized_start=453
-  _USERTOKEN._serialized_end=479
-  _USERMANAGER._serialized_start=482
-  _USERMANAGER._serialized_end=789
+  _USERTOKEN._serialized_start=257
+  _USERTOKEN._serialized_end=283
+  _USERLISTREQUEST._serialized_start=285
+  _USERLISTREQUEST._serialized_end=337
+  _USERDESTROYREQUEST._serialized_start=339
+  _USERDESTROYREQUEST._serialized_end=394
+  _USERRETRIEVEREQUEST._serialized_start=396
+  _USERRETRIEVEREQUEST._serialized_end=452
+  _USERUPDATEREQUEST._serialized_start=454
+  _USERUPDATEREQUEST._serialized_end=537
+  _USERLOGINREQUEST._serialized_start=539
+  _USERLOGINREQUEST._serialized_end=593
+  _USERLOGINRESPONSE._serialized_start=595
+  _USERLOGINRESPONSE._serialized_end=678
+  _USERLOGOUTREQUEST._serialized_start=680
+  _USERLOGOUTREQUEST._serialized_end=734
+  _USERMANAGER._serialized_start=737
+  _USERMANAGER._serialized_end=1141
 # @@protoc_insertion_point(module_scope)

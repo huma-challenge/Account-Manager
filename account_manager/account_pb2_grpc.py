@@ -32,18 +32,23 @@ class UserManagerStub(object):
                 )
         self.Update = channel.unary_unary(
                 '/account.UserManager/Update',
-                request_serializer=account__manager_dot_account__pb2.User.SerializeToString,
+                request_serializer=account__manager_dot_account__pb2.UserUpdateRequest.SerializeToString,
                 response_deserializer=account__manager_dot_account__pb2.User.FromString,
                 )
         self.Destroy = channel.unary_unary(
                 '/account.UserManager/Destroy',
-                request_serializer=account__manager_dot_account__pb2.User.SerializeToString,
+                request_serializer=account__manager_dot_account__pb2.UserDestroyRequest.SerializeToString,
                 response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
         self.Login = channel.unary_unary(
                 '/account.UserManager/Login',
                 request_serializer=account__manager_dot_account__pb2.UserLoginRequest.SerializeToString,
-                response_deserializer=account__manager_dot_account__pb2.UserToken.FromString,
+                response_deserializer=account__manager_dot_account__pb2.UserLoginResponse.FromString,
+                )
+        self.Logout = channel.unary_unary(
+                '/account.UserManager/Logout',
+                request_serializer=account__manager_dot_account__pb2.UserLogoutRequest.SerializeToString,
+                response_deserializer=google_dot_protobuf_dot_empty__pb2.Empty.FromString,
                 )
 
 
@@ -86,6 +91,12 @@ class UserManagerServicer(object):
         context.set_details('Method not implemented!')
         raise NotImplementedError('Method not implemented!')
 
+    def Logout(self, request, context):
+        """Missing associated documentation comment in .proto file."""
+        context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+        context.set_details('Method not implemented!')
+        raise NotImplementedError('Method not implemented!')
+
 
 def add_UserManagerServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -106,18 +117,23 @@ def add_UserManagerServicer_to_server(servicer, server):
             ),
             'Update': grpc.unary_unary_rpc_method_handler(
                     servicer.Update,
-                    request_deserializer=account__manager_dot_account__pb2.User.FromString,
+                    request_deserializer=account__manager_dot_account__pb2.UserUpdateRequest.FromString,
                     response_serializer=account__manager_dot_account__pb2.User.SerializeToString,
             ),
             'Destroy': grpc.unary_unary_rpc_method_handler(
                     servicer.Destroy,
-                    request_deserializer=account__manager_dot_account__pb2.User.FromString,
+                    request_deserializer=account__manager_dot_account__pb2.UserDestroyRequest.FromString,
                     response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
             'Login': grpc.unary_unary_rpc_method_handler(
                     servicer.Login,
                     request_deserializer=account__manager_dot_account__pb2.UserLoginRequest.FromString,
-                    response_serializer=account__manager_dot_account__pb2.UserToken.SerializeToString,
+                    response_serializer=account__manager_dot_account__pb2.UserLoginResponse.SerializeToString,
+            ),
+            'Logout': grpc.unary_unary_rpc_method_handler(
+                    servicer.Logout,
+                    request_deserializer=account__manager_dot_account__pb2.UserLogoutRequest.FromString,
+                    response_serializer=google_dot_protobuf_dot_empty__pb2.Empty.SerializeToString,
             ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -192,7 +208,7 @@ class UserManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/account.UserManager/Update',
-            account__manager_dot_account__pb2.User.SerializeToString,
+            account__manager_dot_account__pb2.UserUpdateRequest.SerializeToString,
             account__manager_dot_account__pb2.User.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -209,7 +225,7 @@ class UserManager(object):
             timeout=None,
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/account.UserManager/Destroy',
-            account__manager_dot_account__pb2.User.SerializeToString,
+            account__manager_dot_account__pb2.UserDestroyRequest.SerializeToString,
             google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
@@ -227,6 +243,23 @@ class UserManager(object):
             metadata=None):
         return grpc.experimental.unary_unary(request, target, '/account.UserManager/Login',
             account__manager_dot_account__pb2.UserLoginRequest.SerializeToString,
-            account__manager_dot_account__pb2.UserToken.FromString,
+            account__manager_dot_account__pb2.UserLoginResponse.FromString,
+            options, channel_credentials,
+            insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
+
+    @staticmethod
+    def Logout(request,
+            target,
+            options=(),
+            channel_credentials=None,
+            call_credentials=None,
+            insecure=False,
+            compression=None,
+            wait_for_ready=None,
+            timeout=None,
+            metadata=None):
+        return grpc.experimental.unary_unary(request, target, '/account.UserManager/Logout',
+            account__manager_dot_account__pb2.UserLogoutRequest.SerializeToString,
+            google_dot_protobuf_dot_empty__pb2.Empty.FromString,
             options, channel_credentials,
             insecure, call_credentials, compression, wait_for_ready, timeout, metadata)
