@@ -4,6 +4,9 @@ from django_grpc_framework import generics
 
 from account_manager.account.serializers import UserProtoSerializer
 
+from account_manager.auth_system.authentication import JWTAuth
+from account_manager.auth_system.authentication_exceptions import AuthenticationFailed
+
 
 # Get active user model
 User = get_user_model()

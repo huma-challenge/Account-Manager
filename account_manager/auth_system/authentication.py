@@ -4,8 +4,11 @@ import datetime
 from django.conf import settings
 from ..account_pb2 import UserToken
 
-from account_manager.auth.authentication_interfaces import Authentication
-from account_manager.auth.authentication_exceptions import TokenExpired, TokenIsInvalid
+from account_manager.auth_system.authentication_interfaces import Authentication
+from account_manager.auth_system.authentication_exceptions import (
+    TokenExpired,
+    TokenIsInvalid,
+)
 
 
 class JWTAuth(Authentication):
