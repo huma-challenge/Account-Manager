@@ -44,3 +44,28 @@ class UserService(generics.ModelService):
         user = self.user
         user.delete()
         return empty_pb2.Empty()
+
+    def Login(self, request: UserLoginRequest, context):
+        try:
+            user = user_model.objects.get(username=request.username)
+
+            # Raising an Error"DoesNotExist" When Password not matched
+            if not user.check_password(request.password):
+                raise user_model.DoesNotExist
+
+        except user_model.DoesNotExist:
+            raise AuthenticationFailed(
+                "Can't find any user with this username and password"
+            )
+        except Exception as Error:
+            raise AuthenticationFailed(Error)
+
+        token = JWTAuth.generate_token(user.id)
+        user = UserProtoSerializer(user)
+
+        response = UserLoginResponse()
+        response.token.CopyFrom(token)
+        response.user.CopyFrom(user.message)
+
+        return response
+
