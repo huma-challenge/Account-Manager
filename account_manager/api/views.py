@@ -45,8 +45,8 @@ class UserService(generics.ModelService):
 
     @authentication_by(JWTAuth)
     def Destroy(self, request, context):
-        user = self.user
-        user.delete()
+        instance = user_model.objects.get(id=request.user_id)
+        instance.delete()
         return empty_pb2.Empty()
 
     def Login(self, request: UserLoginRequest, context):
