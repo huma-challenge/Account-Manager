@@ -27,4 +27,7 @@ class UserService(generics.ModelService):
 
     @authentication_by(JWTAuth)
     def Retrieve(self, request, context):
-        return super().Retrieve(request, context)
+        instance = self.user
+        serializer = self.get_serializer(instance)
+        return serializer.message
+
