@@ -31,7 +31,7 @@ class UserService(generics.ModelService):
 
     @authentication_by(JWTAuth)
     def Retrieve(self, request, context):
-        instance = self.user
+        instance = user_model.objects.get(id=request.user_id)
         serializer = self.get_serializer(instance)
         return serializer.message
 
