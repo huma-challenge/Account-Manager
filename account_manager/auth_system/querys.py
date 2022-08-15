@@ -6,6 +6,11 @@ from django.contrib.auth import get_user_model
 user_model = get_user_model()
 
 
+def is_token_blacklist(token):
+    query = BlackListToken.objects.filter(token=token)
+    return query.exists()
+
+
 def get_user_by_id(id):
     try:
         return user_model.objects.get(id=id)
