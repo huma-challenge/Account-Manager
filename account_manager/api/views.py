@@ -21,7 +21,7 @@ class UserService(generics.ModelService):
         queryset = self.get_queryset()
         serializer = self.get_serializer(queryset, many=True)
 
-        # This RPC is a Stream RPC so we shold pass data as yield insted of returne
+        # This RPC is a Stream RPC so we shold pass data as yield insted of return
         for message in serializer.message:
             yield message
 
