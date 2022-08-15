@@ -69,3 +69,12 @@ class UserService(generics.ModelService):
 
         return response
 
+    @authentication_by(JWTAuth)
+    def Logout(self, request, context):
+        try:
+            add_token_to_blacklist(request.token)
+        except:
+            raise OperatoinFailed(
+                "We can't logout you now please try some moment later"
+            )
+        return empty_pb2.Empty()
