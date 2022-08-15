@@ -1,6 +1,7 @@
 from google.protobuf import empty_pb2
 from django_grpc_framework import generics
 from django.contrib.auth import get_user_model
+from django.contrib.auth.hashers import make_password
 from account_manager.account.serializers import UserProtoSerializer
 from protobufs.account_manager.account_pb2 import UserLoginRequest, UserLoginResponse
 from account_manager.auth_system.authentication import JWTAuth
@@ -10,7 +11,6 @@ from account_manager.auth_system.authentication_exceptions import (
 )
 from account_manager.auth_system.decorators import authentication_by
 from account_manager.auth_system.querys import add_token_to_blacklist
-
 
 # Get active user model
 user_model = get_user_model()
@@ -38,10 +38,22 @@ class UserService(generics.ModelService):
     @authentication_by(JWTAuth)
     def Update(self, request, context):
         instance = self.user
+        
+        # Hashing Raw Password
+        if instance.password :
+            instance.password = make_password(instance.password)
+            
         serializer = self.get_serializer(instance, message=request.user, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
         return serializer.message
+
+    def Create(self, request, context):
+
+        # Hahing raw password
+        request.password = make_password(request.password)
+
+        return super().Create(request, context)
 
     @authentication_by(JWTAuth)
     def Destroy(self, request, context):
