@@ -37,12 +37,12 @@ class UserService(generics.ModelService):
 
     @authentication_by(JWTAuth)
     def Update(self, request, context):
-        instance = self.user
-        
+        instance = user_model.objects.get(id=request.user.id)
+
         # Hashing Raw Password
-        if instance.password :
-            instance.password = make_password(instance.password)
-            
+        if request.user.password:
+            request.user.password = make_password(request.user.password)
+
         serializer = self.get_serializer(instance, message=request.user, partial=True)
         serializer.is_valid(raise_exception=True)
         serializer.save()
