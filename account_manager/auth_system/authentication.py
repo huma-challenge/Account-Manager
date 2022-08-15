@@ -2,7 +2,7 @@ import jwt
 import datetime
 
 from django.conf import settings
-from ..account_pb2 import UserToken
+from protobufs.account_manager.account_pb2 import UserToken
 
 from account_manager.auth_system.authentication_interfaces import Authentication
 from account_manager.auth_system.authentication_exceptions import (

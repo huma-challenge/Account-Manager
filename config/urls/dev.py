@@ -2,7 +2,7 @@ import imp
 from config.urls.base import *
 
 from account_manager.api.views import UserService
-from account_manager import account_pb2_grpc
+from protobufs.account_manager import account_pb2_grpc
 
 # Active all servicers on the server [channel]
 def grpc_handlers(server):

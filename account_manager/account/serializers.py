@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 
 from django_grpc_framework import proto_serializers
-from account_manager import account_pb2
+from protobufs.account_manager import account_pb2
 
 # Get active user model
 User = get_user_model()

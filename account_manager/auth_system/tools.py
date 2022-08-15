@@ -1,4 +1,4 @@
-from account_manager.account_pb2 import UserToken
+from protobufs.account_manager.account_pb2 import UserToken
 
 
 def request_have(request, attr_name: str):

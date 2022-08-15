@@ -2,7 +2,7 @@ from google.protobuf import empty_pb2
 from django_grpc_framework import generics
 from django.contrib.auth import get_user_model
 from account_manager.account.serializers import UserProtoSerializer
-from account_manager.account_pb2 import UserLoginRequest, UserLoginResponse
+from protobufs.account_manager.account_pb2 import UserLoginRequest, UserLoginResponse
 from account_manager.auth_system.authentication import JWTAuth
 from account_manager.auth_system.authentication_exceptions import (
     AuthenticationFailed,
