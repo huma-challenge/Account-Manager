@@ -9,11 +9,11 @@ from account_manager.auth_system.authentication_exceptions import Authentication
 
 
 # Get active user model
-User = get_user_model()
+user_model = get_user_model()
 
 
 class UserService(generics.ModelService):
-    queryset = User.objects.all()
+    queryset = user_model.objects.all()
     serializer_class = UserProtoSerializer
 
     @authentication_by(JWTAuth)
