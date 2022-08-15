@@ -31,3 +31,11 @@ class UserService(generics.ModelService):
         serializer = self.get_serializer(instance)
         return serializer.message
 
+    @authentication_by(JWTAuth)
+    def Update(self, request, context):
+        instance = self.user
+        serializer = self.get_serializer(instance, message=request.user, partial=True)
+        serializer.is_valid(raise_exception=True)
+        serializer.save()
+        return serializer.message
+
