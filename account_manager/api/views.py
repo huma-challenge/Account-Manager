@@ -39,3 +39,8 @@ class UserService(generics.ModelService):
         serializer.save()
         return serializer.message
 
+    @authentication_by(JWTAuth)
+    def Destroy(self, request, context):
+        user = self.user
+        user.delete()
+        return empty_pb2.Empty()
